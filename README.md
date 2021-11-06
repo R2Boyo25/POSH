@@ -11,3 +11,5 @@ If you want to help contribute to POSH, such as new commands or optimization, cr
 ## Known bugs
 ``cd ..`` acts functionally correct, but prints (for example) ``/home/..`` rather than ``/``  
 using ``\n`` with the ec command prints ``\n`` instead of a newline
+## Todo
+Ability to run binaries
