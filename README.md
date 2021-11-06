@@ -9,4 +9,5 @@ I wanted an excuse to call it posh.
 ## Contributing
 If you want to help contribute to POSH, such as new commands or optimization, create a pull request
 ## Known bugs
-``cd ..`` acts functionally correct, but prints (for example) ``/home/..`` rather than ``/``
+``cd ..`` acts functionally correct, but prints (for example) ``/home/..`` rather than ``/``  
+using ``\n`` with the ec command prints ``\n`` instead of a newline
