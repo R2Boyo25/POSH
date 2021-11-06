@@ -7,7 +7,7 @@ Pine's OK shell
 using namespace std;
 namespace fs = std::filesystem;
 fs::path path = "/home/";
-const float version = 1;
+const string version = "0.1 DEV";
 
 #include "command.h"
 
