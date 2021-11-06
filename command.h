@@ -62,3 +62,12 @@ inline void ec(string cmd)
     string arg = cmd.substr(3);
     cout << arg << "\n";
 }
+
+inline void run(string cmd)
+{
+    fs::path arg;
+    arg = path / cmd.substr(3, cmd.find(' ', 4)-3 );
+    if(fs::exists(path / arg))
+        fs::remove(path / arg);
+    else cout << "Error: \"" << arg << "\" doesn't exist." << "\n";
+}
