@@ -1,25 +1,26 @@
 /*
-Pine's OK shell
+TODO:
+Run external apps
+Make a remotely better command parser
+Clean the code
 */
-#include <string.h>
 #include <iostream>
 #include <filesystem>
 using namespace std;
-namespace fs = std::filesystem;
-fs::path path = "/home/";
-const string version = "0.1 DEV";
+filesystem::path path = "/home/";
+const string version = "pre-alpha";
 
-#include "command.h"
+#include "posh.h"
 
 int main()
 {
-	cout << "Pine's OK Shell, POSH, v" << version << "\n";
+	cout << "Pine's OK Shell (POSH) version " << version << "\n";
 	string cmd;
 	while(1)
 	{
 		cout << string(path) << " > ";
 		getline( cin, cmd );
-		if(cmd == "help") cout << "Pine Command Interpreter\nCommands: help, ls\n";
+		if(cmd == "version") cout << "POSH version " << version << "\nhttps://github.com/Boops-Boops/POSH\n";
 		else if(cmd.find("ls") == 0)
 			ls();
 		else if(cmd.find("cd") == 0)
@@ -43,7 +44,14 @@ int main()
 				rm(cmd);
 		}
 		else if(cmd.find("ec") == 0)
-			ec(cmd);
+		{
+			if(cmd.length() > 2)
+				ec(cmd);
+		}
+		else if(cmd.find("./") == 0)
+		{
+			if(filesystem::is_regular_file(cmd.substr(2, cmd.find(' ', 2)))) cout << "POSH can't run programs right now\nIf you know how and want to help, start a pull request at https://github.com/Boops-Boops/POSH\n";
+		}
 		else
 		{
 			cout << "Error: no command \"" << cmd << "\"\n";
