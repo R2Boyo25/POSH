@@ -15,10 +15,19 @@ namespace commands {
 
     void cd(int argc, vector<string> argv)
     {
-        string newdir = argv[1];
-        filesystem::path new_path = path / newdir;
-        if (filesystem::is_directory(new_path)) path = new_path;
-        else cout << "Error: \"" << newdir << "\" is not a directory" << "\n";
+        if (argc == 2) {
+            string newdir = argv[1];
+            filesystem::path new_path = path / newdir;
+            if (filesystem::is_directory(new_path)) {
+                path = new_path;
+            } else {
+                cout << "Error: \"" << newdir << "\" is not a directory" << "\n";
+            }
+        } else if (argc > 2) {
+            cout << "Too many arguments!" << endl;
+        } else {
+            cout << "Provide a directory!" << endl;
+        }
     }
 
     void cp(int argc, vector<string> argv)

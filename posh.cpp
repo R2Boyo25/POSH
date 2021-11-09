@@ -11,7 +11,7 @@ Clean the code
 
 using namespace std;
 
-string path = "/home/";
+filesystem::path path = "/home/";
 const string version = "pre-alpha";
 
 #include "commands/commands.hpp"
