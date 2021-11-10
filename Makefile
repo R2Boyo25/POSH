@@ -1,4 +1,4 @@
 # 
 all:
 	rm -rfvd *.elf
-	g++ -o posh.elf posh.cpp -O2 -std=c++17
+	g++ -o posh.elf *.cpp parse/*.cpp commands/*.cpp com/*.cpp -Ofast -std=c++17
