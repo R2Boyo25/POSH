@@ -1,11 +1,12 @@
-#include <string>
-#include <vector>
 #include "parse.hpp"
-#include <iostream>
 
 using namespace std;
 
 namespace argparse {
+
+	int sCount(string str, char chr) {
+		return count(str.begin(), str.end(), chr);
+	}
 
 	vector<string> split(string splitting, string delimiter) {
 		vector<string> splitstring = {};
@@ -24,6 +25,8 @@ namespace argparse {
 	vector<string> parseArgs(string arguments) {
 		if (arguments == "") {
 			return {""};
+		} else if ((sCount(arguments, '"') + sCount(arguments, '\'')) % 2) {
+			throw std::invalid_argument("Found beginning quote but no end quote!");
 		}
 		vector<string> parsedargs = {};
 		string curarg = "";

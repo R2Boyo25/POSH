@@ -15,8 +15,8 @@ namespace com {
         (*command_function)(argc, argv);
     }
 
-    Commands::Commands() {
-        
+    Commands::Commands(bool quitOnError) {
+        qoe = quitOnError;
     }
 
     void Commands::addCommand(Command command) {
@@ -24,19 +24,26 @@ namespace com {
     }
 
     void Commands::run(std::string arg_string) {
-        std::vector<std::string> args = argparse::parseArgs(arg_string);
-        if (args.size() == 0) {
-            args = {""};
+        try {
+            std::vector<std::string> args = argparse::parseArgs(arg_string);
+            if (args.size() == 0) {
+                args = {""};
+            }
+            std::string command = args[0];
+            //args.erase( args.begin() ); 
+            if (command_list.find(command) != command_list.end()){
+                command_list[command].run(args);
+            } else if (command_list.find("_default") != command_list.end()) {
+                command_list["_default"].run(args);
+            } else {
+                throw std::invalid_argument( command + " not found and no default command" );
+            }
+        } catch (const std::exception& ex) {
+            if (qoe) {
+                throw;
+            } else {
+                std::cout << ex.what() << std::endl;
+            }
         }
-        std::string command = args[0];
-        //args.erase( args.begin() ); 
-        if (command_list.find(command) != command_list.end()){
-            command_list[command].run(args);
-        } else if (command_list.find("_default") != command_list.end()) {
-            command_list["_default"].run(args);
-        } else {
-            throw std::invalid_argument( command + " not found and no default command" );
-        }
-
     }
 }

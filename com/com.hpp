@@ -19,10 +19,11 @@ namespace com {
 
     class Commands {
         public:
-            Commands();
+            Commands(bool quitOnError = false);
             void addCommand(Command command);
             void run(std::string arg_string);
         private:
+            bool qoe = false;
             std::map<std::string, Command> command_list;
     };
 }

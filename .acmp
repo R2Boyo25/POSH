@@ -1,0 +1,13 @@
+{
+	"_default": {
+		"out":"posh", 
+		"com":"c++", 
+		"oarg": [
+			"-Ofast", 
+			"-std=c++17"
+		], 
+		"l": [
+			"stdc++fs"
+		]
+	}
+}
