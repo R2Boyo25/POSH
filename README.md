@@ -1,3 +1,7 @@
+# Fork of repository by Boops-Boops
+The repository Boops-Boops/POSH has been deleted, 
+everything below is the readme from that repository.
+
 # POSH
 Pine's ok shell, a shell in C++
 ## Answers to questions nobody asked.
