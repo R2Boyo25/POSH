@@ -67,16 +67,8 @@ namespace argparse {
 				parsedargs.push_back( curarg );
 			} else if ( multiarg ) { 
 				// In multi-word argument, add arg to multi-word argument
-				try {
-					curarg += " " + arg;	
-				} catch (exception) {
-					throw invalid_argument("No ending quote!");
-				}
-			} else if (
-				arg.find( "\"" ) == 0 // " at beginning 
-				||
-				arg.find( "'" ) == 0 // ' at beginning
-				) { 
+				curarg += " " + arg;	
+			} else {
 				// Begin multi-word argument, set multi-word argument to arg
 				multiarg = true;
 				curarg = arg.substr( 1, (arg.size() - 1) ); 
