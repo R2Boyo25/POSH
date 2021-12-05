@@ -84,8 +84,16 @@ namespace commands {
 
     void ec(int argc, vector<string> argv)
     {
-        string arg = argv[1];
-        cout << arg << "\n";
+        int i = 0;
+        for( const string& arg : argv ) {
+            if (i == 0) {
+                i++;
+                continue;
+            }
+            i++;
+            cout << arg << " ";
+        }
+        cout << endl;
     }
 
     void run(int argc, vector<string> argv)

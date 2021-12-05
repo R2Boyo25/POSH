@@ -1,1 +1,5 @@
 posh
+*.o
+*.mhsh
+posh.elf
+.vscode
